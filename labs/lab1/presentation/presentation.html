@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Морозова У. К.">
-  <meta name="author" content="студентка группы НФИмд-02-25">
-  <title>Каналы утечки информации</title>
+  <meta name="author" content="Морозова Ульяна">
+  <title>Лабораторная работа №1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -56,7 +55,91 @@ margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-</style>
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+} </style>
   <style type="text/css">
 @font-face {
 font-family: 'League Gothic';
@@ -388,119 +471,97 @@ background-color: var(--r-background-color);
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Каналы утечки информации</h1>
-  <p class="author">Морозова У. К.</p>
-  <p class="author">студентка группы НФИмд-02-25</p>
+  <h1 class="title">Лабораторная работа №1</h1>
+  <p class="author">Морозова Ульяна</p>
   <p class="institute">Российский университет дружбы народов, Москва,
 Россия</p>
-  <p class="date">16 сентября 2025</p>
+  <p class="date">01 января 1970</p>
 </section>
 
-<section id="что-такое-канал-утечки-информации" class="slide level2">
-<h2>Что такое канал утечки информации?</h2>
-<p><strong>Канал утечки информации</strong> – это путь или способ, с
-помощью которого защищаемые сведения передаются от источника к
-злоумышленнику или неавторизованному лицу.</p>
+<section id="цели" class="slide level2">
+<h2>Цели</h2>
+<p>Целью работы является изучение алгоритмов шифрования Цезаря и Атбаша
+и реализация их на языке Julia.</p>
 </section>
-<section id="структура-канала" class="slide level2">
-<h2>Структура канала</h2>
-<p>Для возникновения канала утечки необходимо наличие трех
-элементов:</p>
-<ol type="1">
-<li><strong>Источник информации</strong> (носитель данных: сотрудник,
-документ, сервер).</li>
-<li><strong>Физическая или техническая среда</strong> (канал передачи:
-звуковая волна, электромагнитное излучение, сетевой кабель).</li>
-<li><strong>Нарушитель</strong> (лицо или система, получающая
-информацию).</li>
-</ol>
+<section id="шифр-цезаря" class="slide level2">
+<h2>Шифр Цезаря</h2>
+<p>Суть шифра Цезаря заключается в том, что происходит смещение всех
+букв по алфавиту в сообщении на некоторый коэффициент k. Декодирование
+происходим путем смещения в обратную сторону.</p>
+<p>Далее приведена реализация шифра на языке Julia для русского и
+английского алфавита.</p>
 </section>
-<section>
-<section id="классификация-каналов-утечки-информации" class="title-slide slide level1">
-<h1>Классификация каналов утечки информации</h1>
+<section id="код" class="slide level2">
+<h2>Код</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">caeser_cipher</span>(text<span class="op">::</span><span class="dt">AbstractString</span>, k<span class="op">::</span><span class="dt">int</span>, encrypt<span class="op">::</span><span class="dt">Bool</span>=<span class="cn">true</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    rus_alphabet <span class="op">=</span> <span class="fu">collect</span>(<span class="st">&quot;АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯ&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    eng_alphabet <span class="op">=</span> <span class="fu">collect</span>(<span class="st">&quot;ABCDEFGHIJKLMNOPQRSTUWXYZ&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    result<span class="op">=</span><span class="fu">IOBuffer</span>()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> <span class="fu">uppercase</span>(text)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c <span class="kw">in</span> rus_alphabet</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            alphabet <span class="op">=</span> rus_alphabet</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elseif</span> c <span class="kw">in</span> eng_alphabet</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            alphabet <span class="op">=</span> eng_alphabet</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">print</span>(result, c)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">print</span>(<span class="st">&quot;Unknown language&quot;</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="fu">length</span>(alphabet)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        index_c <span class="op">=</span> <span class="fu">findfirst</span>(<span class="op">==</span>(c), alphabet)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> encrypt</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            new_index <span class="op">=</span> <span class="fu">mod</span>(index_c <span class="op">-</span> <span class="fl">1</span> <span class="op">+</span> k, n) <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            new_index <span class="op">=</span> <span class="fu">mod</span>(index_c <span class="op">-</span> <span class="fl">1</span> <span class="op">-</span> k, n) <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(result, alphabet[new_index])</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">String</span>(<span class="fu">take!</span>(result))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+</section>
+<section id="результат-работы-шифра" class="slide level2">
+<h2>Результат работы шифра</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span><span class="op">&gt;</span> caesar_cipher<span class="er">(</span><span class="st">&quot;EVENING&quot;</span><span class="ex">,</span> 3, encrypt=true<span class="kw">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;HYHQLQJ&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span><span class="op">&gt;</span> caesar_cipher<span class="er">(</span><span class="st">&quot;HYHQLQJ&quot;</span><span class="ex">,</span> 3, encrypt=false<span class="kw">)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;EVENING&quot;</span></span></code></pre></div>
+</section>
+<section id="шифр-атбаша" class="slide level2">
+<h2>Шифр Атбаша</h2>
+<p>Шифр представляет собой шифр сдвига на всю длину алфавита.</p>
+</section>
+<section id="код-1" class="slide level2">
+<h2>Код</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">atbash_cipher</span>(text<span class="op">::</span><span class="dt">String</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="fu">IOBuffer</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> text</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="ch">&#39;A&#39;</span> <span class="op">&lt;=</span> c <span class="op">&lt;=</span> <span class="ch">&#39;Z&#39;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">write</span>(result, <span class="fu">Char</span>(<span class="ch">&#39;Z&#39;</span> <span class="op">-</span> (c <span class="op">-</span> <span class="ch">&#39;A&#39;</span>)))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elseif</span> <span class="ch">&#39;a&#39;</span> <span class="op">&lt;=</span> c <span class="op">&lt;=</span> <span class="ch">&#39;z&#39;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">write</span>(result, <span class="fu">Char</span>(<span class="ch">&#39;z&#39;</span> <span class="op">-</span> (c <span class="op">-</span> <span class="ch">&#39;a&#39;</span>)))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">write</span>(result, c)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">String</span>(<span class="fu">take!</span>(result))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+</section>
+<section id="выполнение-работы-кода" class="slide level2">
+<h2>Выполнение работы кода</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span><span class="op">&gt;</span> atbash_cipher<span class="er">(</span><span class="st">&quot;TOMORROW&quot;</span><span class="kw">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;GLNLIILD&quot;</span></span></code></pre></div>
+</section>
+<section id="выводы" class="slide level2">
+<h2>Выводы</h2>
+<p>Мы изучили работу алгоритмов шифрования Цезаря и Атбаша, а также
+реализовали их на языке Julia.</p>
+<div id="refs" role="list">
 
+</div>
 </section>
-<section id="технические-каналы-утечки-пэмин" class="slide level2">
-<h2>Технические каналы утечки (ПЭМИН)</h2>
-<p>Эти каналы связаны с перехватом информации за счет побочных
-электромагнитных излучений и наводок (ПЭМИН).</p>
-<ul>
-<li><strong>Электромагнитные</strong></li>
-<li><strong>Акустические</strong></li>
-<li><strong>Материально-вещественные</strong></li>
-<li><strong>Оптические</strong></li>
-</ul>
-<p><strong>Методы противодействия:</strong> экранирование помещений,
-использование средств защиты от ПЭМИН (сетевые фильтры, генераторы
-шума), проверка помещений на наличие подслушивающих устройств (аудит
-безопасности).</p>
-</section>
-<section id="организационно-человеческие-каналы-человеческий-фактор" class="slide level2">
-<h2>Организационно-человеческие каналы (Человеческий фактор)</h2>
-<p>Это самый распространенный и непредсказуемый канал утечки. По
-различным оценкам, на него приходится до 70-80% всех инцидентов.</p>
-<ul>
-<li><strong>Социальная инженерия</strong></li>
-<li><strong>Внутренний нарушитель</strong></li>
-<li><strong>Неосторожность или халатность</strong></li>
-<li><strong>Недостатки организационных мер</strong></li>
-</ul>
-<p><strong>Методы противодействия:</strong> Регулярное обучение и
-повышение осведомленности сотрудников, строгая политика паролей и
-контроля доступа, разделение обязанностей, внедрение правила “чистого
-стола”, проверка сотрудников при приеме на работу.</p>
-</section>
-<section id="программно-аппаратные-каналы-ит-инфраструктура" class="slide level2">
-<h2>Программно-аппаратные каналы (ИТ-инфраструктура)</h2>
-<p>Эти каналы связаны с уязвимостями в программном обеспечении,
-аппаратном обеспечении и сетевой инфраструктуре.</p>
-<ul>
-<li><strong>Вредоносное ПО (вирусы, трояны, шпионское ПО)</strong></li>
-<li><strong>Сетевые атаки</strong></li>
-<li><strong>Уязвимости в ПО</strong></li>
-<li><strong>Аппаратные закладки</strong></li>
-</ul>
-<p><strong>Методы противодействия:</strong> Установка и регулярное
-обновление антивирусов, межсетевых экранов (файрволов), систем
-обнаружения и предотвращения вторжений (IDS/IPS), шифрование каналов
-связи и данных, регулярное обновление ПО</p>
-</section>
-<section id="комплексный-подход-к-защите" class="slide level2">
-<h2>Комплексный подход к защите</h2>
-<p>Недостаточно бороться только с одним типом угроз. Эффективная защита
-требует комплексного подхода:</p>
-<ol type="1">
-<li><strong>Регламентация:</strong> Разработка и внедрение политик
-информационной безопасности.</li>
-<li><strong>Технические средства:</strong> Внедрение DLP-систем (Data
-Loss Prevention) для контроля и блокировки передачи конфиденциальных
-данных, шифрование, системы мониторинга.</li>
-<li><strong>Работа с персоналом:</strong> Постоянное обучение, создание
-культуры безопасности.</li>
-<li><strong>Аудит и контроль:</strong> Регулярная проверка эффективности
-мер защиты, анализ инцидентов.</li>
-</ol>
-</section>
-<section id="заключение" class="slide level2">
-<h2>Заключение</h2>
-<p>Понимание каналов утечки информации является первым и критически
-важным шагом на пути к построению эффективной системы защиты. Только
-осознавая все многообразие угроз — от технического шпионажа до простой
-человеческой ошибки — организация может выстроить крепкую стратегию,
-которая позволит сохранить ее наиболее важный актив — информацию.</p>
-</section>
-<section id="список-литературы" class="slide level2">
-<h2>Список литературы</h2>
-<ol type="1">
-<li>ГОСТ Р 51275-99. Защита информации. Объект информатизации. Факторы,
-воздействующие на информацию. Общие положения. (Принят и введён в
-действие Постановлением Госстандарта России от 12 мая 1999 г. №
-160)</li>
-<li>https://ru.wikipedia.org/wiki/Каналы_утечки_информации</li>
-<li>Хорев А. А. «Защита информации от утечки по техническим каналам.
-Часть 1. Технические каналы утечки информации» — Москва, 1997.</li>
-</ol>
-</section></section>
     </div>
   </div>
 
