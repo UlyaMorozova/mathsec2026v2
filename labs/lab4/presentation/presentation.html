@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Морозова Ульяна">
-  <title>Лабораторная работа №3</title>
+  <title>Лабораторная работа №4</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -471,82 +471,106 @@ background-color: var(--r-background-color);
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Лабораторная работа №3</h1>
+  <h1 class="title">Лабораторная работа №4</h1>
   <p class="author">Морозова Ульяна</p>
   <p class="institute">Российский университет дружбы народов, Москва,
 Россия</p>
 </section>
 
-<section id="цели" class="slide level2">
-<h2>Цели</h2>
-<p>Целью работы является изучение алгоритмов шифрования гаммированием и
-реализация его на языке Julia.</p>
+<section class="slide level1">
+
+<h2 id="цели">Цели</h2>
+<p>Целью работы является изучение алгоритмов вычисления НОД и реализация
+их на языке Julia.</p>
+<h2 id="алгоритм-евклида">Алгоритм Евклида</h2>
+<p>Алгоритм Евклида — метод для нахождения наибольшего общего делителя
+(НОД) двух чисел. Алгоритм основан на принципе, что НОД двух чисел
+остаётся неизменным, когда большее число заменяется его остатком при
+делении на меньшее число.</p>
+<h2 id="код">Код</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">euclidean</span>(a<span class="op">::</span><span class="dt">T</span>, b<span class="op">::</span><span class="dt">T</span>) <span class="kw">where</span> T<span class="op">&lt;:</span><span class="dt">Integer </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span><span class="fu">abs</span>(a)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    b<span class="op">=</span><span class="fu">abs</span>(b)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> b <span class="op">!=</span> <span class="fl">0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        a,b <span class="op">=</span> b, a<span class="op">%</span>b</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<h2 id="бинарный-алгоритм-евклида">Бинарный алгоритм Евклида</h2>
+<p>Бинарный алгоритм вычисления НОД (бинарный алгоритм Евклида) — метод
+нахождения наибольшего общего делителя (НОД) двух целых чисел, который
+использует операции сдвига и вычитания вместо деления. Разработан в 1967
+году Джозефом Стайном.</p>
+<p>Преимущества алгоритма: - скорость работы за счёт использования
+бинарных операций, которые выполняются быстрее, чем деление и умножение;
+- отсутствие дорогостоящих операций деления и остатка.</p>
+<h2 id="код-1">Код</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">binary_euc</span>(a<span class="op">::</span><span class="dt">T</span>, b<span class="op">::</span><span class="dt">T</span>) <span class="kw">where</span> T<span class="op">&lt;:</span><span class="dt">Integer</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span><span class="fu">abs</span>(a)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    b<span class="op">=</span><span class="fu">abs</span>(b)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> b</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> ((a<span class="op">|</span>b)<span class="op">&amp;</span><span class="fl">1</span>) <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        a<span class="op">&gt;&gt;=</span><span class="fl">1</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        b<span class="op">&gt;&gt;=</span><span class="fl">1</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        s <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span></code></pre></div>
+<h2 id="расширенный-алгоритм-евклида">Расширенный алгоритм Евклида</h2>
+<p>Расширенный алгоритм Евклида — модификация алгоритма Евклида,
+которая, кроме вычисления наибольшего общего делителя (НОД) двух целых
+чисел, находит коэффициенты x и y для уравнения Безу: ax + by = НОД(a,
+b). Это означает, что алгоритм не только находит НОД, но и выражает его
+как линейную комбинацию a и b.</p>
+<h2 id="код-2">Код</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ext_euc</span>(a<span class="op">::</span><span class="dt">T</span>, b<span class="op">::</span><span class="dt">T</span>) <span class="kw">where</span> T<span class="op">&lt;:</span><span class="dt">Integer</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a, <span class="fu">one</span>(T), <span class="fu">zero</span>(T)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    gcd_val, x1, y1 <span class="op">=</span> <span class="fu">ext_euc</span>(b, a <span class="op">%</span> b)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> y1</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x1 <span class="op">-</span> (a <span class="op">÷</span> b) <span class="op">*</span> y1</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gcd_val, x, y</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<h2 id="расширенный-бинарный-алгоритм-евклида">Расширенный бинарный
+алгоритм Евклида</h2>
+<p>Бинарный расширенный алгоритм Евклида - это комбинация бинарного и
+расширенного алгоритмов, он использует битовые операции для повышения
+эффективности Все функции работают с целыми числами любого размера и
+корректно обрабатывают отрицательные числа и нули.</p>
+<h2 id="результаты-работы-алгоритмов">Результаты работы алгоритмов</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Тестирование</span> алгоритмов НОД:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">==================================================</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">НОД</span><span class="er">(</span><span class="ex">48,</span> 18<span class="kw">)</span> <span class="ex">=</span> 6</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Классический:</span> 6</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Бинарный:</span> 6</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Расширенный:</span> 6 <span class="er">(</span><span class="ex">коэффициенты:</span> <span class="at">-1,</span> 3<span class="kw">)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Бинарный</span> расширенный: 6 <span class="er">(</span><span class="ex">коэффициенты:</span> <span class="at">-4,</span> 11<span class="kw">)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Тождество</span> Безу <span class="er">(</span><span class="ex">расширенный</span><span class="kw">)</span><span class="bu">:</span> true</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Тождество</span> Безу <span class="er">(</span><span class="ex">бинарный</span> расширенный<span class="kw">)</span><span class="bu">:</span> true</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">------------------------------</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">НОД</span><span class="er">(</span><span class="ex">1071,</span> 462<span class="kw">)</span> <span class="ex">=</span> 21</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Классический:</span> 21</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Бинарный:</span> 21</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Расширенный:</span> 21 <span class="er">(</span><span class="ex">коэффициенты:</span> <span class="at">-3,</span> 7<span class="kw">)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Бинарный</span> расширенный: 21 <span class="er">(</span><span class="ex">коэффициенты:</span> <span class="at">-47,</span> 109<span class="kw">)</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Тождество</span> Безу <span class="er">(</span><span class="ex">расширенный</span><span class="kw">)</span><span class="bu">:</span> true</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Тождество</span> Безу <span class="er">(</span><span class="ex">бинарный</span> расширенный<span class="kw">)</span><span class="bu">:</span> true</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ex">------------------------------</span></span></code></pre></div>
 </section>
-<section id="шифрование-гаммированием" class="slide level2">
-<h2>Шифрование гаммированием</h2>
-<p>Шифрование гаммированием (в англоязычной версии — stream cipher) —
-метод симметричного шифрования, при котором последовательность случайных
-символов (гамма) накладывается на открытый текст. Гамма вырабатывается
-по определённому алгоритму и используется для шифровки открытых данных и
-дешифровки шифротекста.</p>
-</section>
-<section id="принцип-работы" class="slide level2">
-<h2>Принцип работы</h2>
-<ul>
-<li>Генерация гаммы. Можно использовать генератор псевдослучайных чисел
-или аппаратный источник случайных чисел. Длина гаммы должна быть не
-меньше длины защищаемого сообщения (открытого текста).</li>
-<li>Наложение гаммы на открытый текст. Процедура может быть различной:
-например, символы исходного текста и гаммы заменяются цифровыми
-эквивалентами, которые затем складываются или вычитаются, или символы
-представляются в виде двоичного кода, затем соответствующие разряды
-складываются по модулю 2 (XOR).</li>
-<li>Дешифрование — повторная генерация гаммы и наложение гаммы на
-зашифрованные данные.</li>
-</ul>
-</section>
-<section id="код" class="slide level2">
-<h2>Код</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gamma_cipher</span>(text<span class="op">::</span><span class="dt">AbstractString</span>, key<span class="op">::</span><span class="dt">AbstractString</span>; encrypt<span class="op">::</span><span class="dt">Bool</span>=<span class="cn">true</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Преобразуем текст и ключ в массивы байтов</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    text_bytes <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{UInt8}</span>(text)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    key_bytes <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{UInt8}</span>(key)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Если ключ короче текста, повторяем его</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">length</span>(key_bytes) <span class="op">&lt;</span> <span class="fu">length</span>(text_bytes)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        key_bytes <span class="op">=</span> <span class="fu">repeat</span>(key_bytes, <span class="fu">ceil</span>(<span class="dt">Int</span>, <span class="fu">length</span>(text_bytes) <span class="op">/</span> <span class="fu">length</span>(key_bytes)))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        key_bytes <span class="op">=</span> key_bytes[<span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(text_bytes)]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{UInt8}</span>(<span class="cn">undef</span>, <span class="fu">length</span>(text_bytes))</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Применяем операцию XOR между текстом и гаммой</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(text_bytes)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        result[i] <span class="op">=</span> text_bytes[i] xor key_bytes[i]</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">String</span>(result)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">generate_key</span>(length<span class="op">::</span><span class="dt">Int</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">String</span>(<span class="fu">rand</span>(<span class="dt">UInt8</span>, length))</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-</section>
-<section id="результат-работы-шифра" class="slide level2">
-<h2>Результат работы шифра</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span><span class="op">&gt;</span> demo<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Исходный</span> текст: All I want for Christmas is you!</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ключ</span> <span class="er">(</span><span class="ex">hex</span><span class="kw">)</span><span class="bu">:</span> b82a3af92aa5d3026365c938858f79a7</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Зашифрованный</span> текст <span class="er">(</span><span class="ex">hex</span><span class="kw">)</span><span class="bu">:</span> f94656d96385a4630d11e95eeafd59e4d058538a5ec8b271430cba18fce00c86</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Дешифрованный</span> текст: All I want for Christmas is you!</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Проверка:</span> true</span></code></pre></div>
-</section>
-<section id="выводы" class="slide level2">
-<h2>Выводы</h2>
-<p>Мы изучили работу алгоритмов шифрования гаммированием, а также
-реализовали его на языке Julia.</p>
+<section id="выводы" class="slide level1">
+<h1>Выводы</h1>
+<p>Мы изучили работу алгоритмов вычисления НОД, а также реализовали их
+на языке Julia.</p>
 <div id="refs" role="list">
 
 </div>
